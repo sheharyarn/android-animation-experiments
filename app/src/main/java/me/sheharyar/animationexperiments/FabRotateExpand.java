@@ -27,6 +27,9 @@ public class FabRotateExpand extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fab_rotate_expand);
 
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+
         secret = (RelativeLayout)       findViewById (R.id.secretView);
         root   = (RelativeLayout)       findViewById (R.id.rootView);
         fab    = (FloatingActionButton) findViewById (R.id.fab);
@@ -35,7 +38,7 @@ public class FabRotateExpand extends ActionBarActivity {
 
     public void fabPressed(View view) {
         AnimationSet anims = new AnimationSet(true);
-        final int ANIM_TIME = 700;
+        final int ANIM_TIME = 500;
 
 
         // Rotate Anim
@@ -46,11 +49,11 @@ public class FabRotateExpand extends ActionBarActivity {
         int fabOrig[] = new int[2];
         fab.getLocationOnScreen(fabOrig);
 
-        int fabDiffX = (fab.getMeasuredWidth()/2);
+        final int fabDiffX = (fab.getMeasuredWidth()/2);
         final int fabDestX = root.getLeft() + root.getMeasuredWidth()/2;
         final int fabDestY = root.getTop() + root.getMeasuredHeight()/2;
 
-        TranslateAnimation translate = new TranslateAnimation(0, fabDestX - fabOrig[0] - fabDiffX, 0, fabDestY - fabOrig[1]);
+        TranslateAnimation translate = new TranslateAnimation(0, fabDestX - fabOrig[0] - fabDiffX, 0, fabDestY - fabOrig[1] - fabDiffX);
 
         anims.addAnimation(rotate);
         anims.addAnimation(translate);
@@ -61,7 +64,7 @@ public class FabRotateExpand extends ActionBarActivity {
             public void onAnimationStart(Animation animation) {
                 new AsyncTask<Void, Void, Void>() {
                     protected Void doInBackground(Void... unused) {
-                        SystemClock.sleep(ANIM_TIME - 250);
+                        SystemClock.sleep(ANIM_TIME - 125);
                         return null;
                     }
                     protected void onPostExecute(Void unused) {
