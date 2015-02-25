@@ -3,13 +3,21 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryDark">@color/blueDark</item>
+        <!--<item name="colorPrimaryDark">@color/blueDark</item>-->
     </style>
+
+    <color name="fab">@color/blue</color>
+    <color name="fab_ripple">@color/pink</color>
+    <color name="fab_pressed">@color/blueDark</color>
+
 
     <color name="bg">@color/background_material_dark</color>
     <color name="blue">#3b5bb3</color>
     <color name="blueDark">#2a499d</color>
 
-    <string name="font">sans-serif-light</string>
+    <color name="pink">#ea4962</color>
+    <color name="pinkLight">#ff7087</color>
+    <color name="pinkDark">#d2415a</color>
 
+    <string name="font">sans-serif-light</string>
 </resources>

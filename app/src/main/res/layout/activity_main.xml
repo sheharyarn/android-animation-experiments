@@ -16,5 +16,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
         android:fontFamily="@string/font"
-        android:textColor="@color/blue" />
+        android:textColor="@color/blue"
+        android:textSize="25dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fab Rotate Expand"
+        android:id="@+id/button"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="97dp"
+        android:onClick="experiment1" />
+
 </RelativeLayout>
