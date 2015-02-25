@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
         android:fontFamily="@string/font"
-        android:textColor="@color/blue"
+        android:textColor="@color/pinkLight"
         android:textSize="25dp" />
 
     <Button
