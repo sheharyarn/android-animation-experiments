@@ -1,15 +1,18 @@
 package me.sheharyar.animationexperiments;
 
 import android.animation.Animator;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
@@ -18,9 +21,11 @@ import com.melnykov.fab.FloatingActionButton;
 
 
 public class FabRotateExpand extends ActionBarActivity {
+    private static int VIBRATOR_VALUE = 20;
     private FloatingActionButton fab;
     private RelativeLayout secret;
     private RelativeLayout root;
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +35,44 @@ public class FabRotateExpand extends ActionBarActivity {
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
 
+        vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+
         secret = (RelativeLayout)       findViewById (R.id.secretView);
         root   = (RelativeLayout)       findViewById (R.id.rootView);
         fab    = (FloatingActionButton) findViewById (R.id.fab);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fabShortPress();
+                vibrate();
+            }
+        });
+
+        fab.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                fabLongPress();
+                vibrate();
+                return false;
+            }
+        });
+
     }
 
-    public void fabPressed(View view) {
+    private void fabShortPress() {
+        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        fab.startAnimation(shake);
+    }
+
+    private void fabLongPress() {
+        fab.setEnabled(false);
         AnimationSet anims = new AnimationSet(true);
         final int ANIM_TIME = 500;
 
 
         // Rotate Anim
-        RotateAnimation rotate = new RotateAnimation(0,360*2, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        RotateAnimation rotate = new RotateAnimation(0, 360*2, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 
 
         // Translate Anim
@@ -87,6 +117,11 @@ public class FabRotateExpand extends ActionBarActivity {
 
 
         fab.startAnimation(anims);
+    }
+
+
+    private void vibrate() {
+        vibrator.vibrate(VIBRATOR_VALUE);
     }
 
 }

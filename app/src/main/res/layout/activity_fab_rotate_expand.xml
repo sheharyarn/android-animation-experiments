@@ -34,7 +34,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
-        android:onClick="fabPressed"
         android:src="@drawable/ic_fab_star"
         fab:fab_colorNormal="@color/fab"
         fab:fab_colorPressed="@color/fab_pressed"
