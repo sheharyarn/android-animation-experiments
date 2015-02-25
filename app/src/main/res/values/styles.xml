@@ -7,7 +7,7 @@
     </style>
 
     <color name="fab">@color/blue</color>
-    <color name="fab_ripple">@color/pink</color>
+    <color name="fab_ripple">@color/blueDark</color>
     <color name="fab_pressed">@color/blueDark</color>
 
 
