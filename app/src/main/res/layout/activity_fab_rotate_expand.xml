@@ -6,28 +6,6 @@
     android:id="@+id/rootView">
 
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/blue"
-        android:visibility="invisible"
-        android:id="@+id/secretView">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Yo"
-            android:id="@+id/textView2"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="153dp"
-            android:fontFamily="@string/font"
-            android:textSize="30dp" />
-    </RelativeLayout>
-
     <com.melnykov.fab.FloatingActionButton xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:fab="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fab"
@@ -41,6 +19,53 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="70dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Touch Me"
+        android:id="@+id/mainMessage"
+        android:layout_marginTop="174dp"
+        android:fontFamily="sans-serif-thin"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/blue"
+        android:visibility="invisible"
+        android:id="@+id/secretView">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="149dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/spook_ghost" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Booo!"
+                android:id="@+id/textView2"
+                android:fontFamily="sans-serif-black"
+                android:textSize="30dp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>

@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.melnykov.fab.FloatingActionButton;
 
@@ -26,6 +27,7 @@ public class FabRotateExpand extends ActionBarActivity {
     private RelativeLayout secret;
     private RelativeLayout root;
     private Vibrator vibrator;
+    private TextView message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +39,17 @@ public class FabRotateExpand extends ActionBarActivity {
 
         vibrator = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
 
-        secret = (RelativeLayout)       findViewById (R.id.secretView);
-        root   = (RelativeLayout)       findViewById (R.id.rootView);
-        fab    = (FloatingActionButton) findViewById (R.id.fab);
+        message = (TextView)             findViewById (R.id.mainMessage);
+        secret  = (RelativeLayout)       findViewById (R.id.secretView);
+        root    = (RelativeLayout)       findViewById (R.id.rootView);
+        fab     = (FloatingActionButton) findViewById (R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fabShortPress();
                 vibrate();
+                message.setText("Hold Me");
             }
         });
 
