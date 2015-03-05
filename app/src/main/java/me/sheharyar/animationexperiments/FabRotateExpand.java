@@ -12,7 +12,8 @@ import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
@@ -65,8 +66,30 @@ public class FabRotateExpand extends ActionBarActivity {
     }
 
     private void fabShortPress() {
-        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
-        fab.startAnimation(shake);
+//        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+//        fab.startAnimation(shake);
+
+        final int deltaY = 200;
+
+        TranslateAnimation jump = new TranslateAnimation(0,0,0, -deltaY);
+        jump.setFillAfter(true);
+        jump.setDuration(400);
+        jump.setInterpolator(new DecelerateInterpolator(2.0f));
+
+        jump.setAnimationListener(new Animation.AnimationListener() {
+            public void onAnimationStart(Animation animation)  {}
+            public void onAnimationRepeat(Animation animation) {}
+            public void onAnimationEnd(Animation animation) {
+                TranslateAnimation bounceBack = new TranslateAnimation(0,0,-deltaY, 0);
+                bounceBack.setFillAfter(true);
+                bounceBack.setDuration(500);
+                bounceBack.setInterpolator(new BounceInterpolator());
+
+                fab.startAnimation(bounceBack);
+            }
+        });
+
+        fab.startAnimation(jump);
     }
 
     private void fabLongPress() {
